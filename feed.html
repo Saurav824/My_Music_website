@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #ff9a9e, #fad0c4, #fbc2eb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            width: 400px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        input, textarea, select, button {
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        input, textarea, select {
+            background: #f1f1f1;
+            transition: box-shadow 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            box-shadow: 0 0 8px rgba(255, 118, 117, 0.8);
+            outline: none;
+        }
+
+        button {
+            background: linear-gradient(to right, #43e97b, #38f9d7);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #38f9d7, #43e97b);
+        }
+
+        .animated-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: float 8s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .circle1 {
+            width: 150px;
+            height: 150px;
+            top: -50px;
+            left: -50px;
+        }
+
+        .circle2 {
+            width: 100px;
+            height: 100px;
+            bottom: -30px;
+            right: -30px;
+        }
+
+        .thank-you {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+            font-size: 16px;
+            display: none;
+        }
+    </style>
+    <script>
+        function showThankYouMessage(event) {
+            event.preventDefault();
+            document.querySelector('.thank-you').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback</h1>
+        <form action="#" method="post" onsubmit="showThankYouMessage(event)">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email" required>
+
+            <label for="feedback">Feedback</label>
+            <textarea id="feedback" name="feedback" rows="5" placeholder="Your feedback" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div class="thank-you">Thank you for your feedback 😊❤️🎶!!!</div>
+    </div>
+
+    <div class="animated-circle circle1"></div>
+    <div class="animated-circle circle2"></div>
+</body>
+</html>

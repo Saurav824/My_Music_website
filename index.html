@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mymusic - Your favourite music is here</title>
+        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Ensure Font Awesome is included -->
+        </head>
+<body>
+    <nav>
+        <ul>
+            <a href="" class="back-button"><i class="fas fa-arrow-left"></i></a> <!-- Back button -->
+            <li class="brand"><img src="logo1.png" alt="Mymusic"> Mymusic</li>
+            <li><a href="">Home</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="songList">
+            <h1>Best of melody-mix cambo </h1>
+            <div class="songItemContainer">
+                <div class="songItem">
+                    <img alt="cov1.jpg">
+                    <span class="songName">Zihall e makuimber</span>
+                    <span class="songlistplay"><span class="timestamp">04:04 <i id="0" class="far songItemPlay fa-play-circle"></i> </span></span>
+                </div>
+                <div class="songItem">
+                    <img alt="cov2.jpg">
+                    <span class="songName">Oonchi Oonchi Deewarein</span>
+                    <span class="songlistplay"><span class="timestamp">04:20 <i id="1" class="far songItemPlay fa-play-circle"></i> </span></span>
+                </div>
+                <div class="songItem">
+                    <img alt="cov3.jpg">
+                    <span class="songName">Sajni</span>
+                    <span class="songlistplay"><span class="timestamp">04:15 <i id="2" class="far songItemPlay fa-play-circle"></i> </span></span>
+                </div>
+                <div class="songItem">
+                    <img alt="cov4.jpg">
+                    <span class="songName">Dil Diyan Gallan</span>
+                    <span class="songlistplay"><span class="timestamp">03:37 <i id="3" class="far songItemPlay fa-play-circle"></i> </span></span>
+                </div>
+                <div class="songItem">
+                    <img alt="cov5.jpg">
+                    <span class="songName">Janji-Heroes-Tonight-feat-Johnning-NCS-Release</span>
+                    <span class="songlistplay"><span class="timestamp">04:28 <i id="4" class="far songItemPlay fa-play-circle"></i> </span></span>
+                </div>
+                <div class="songItem">
+                    <img alt="cov6.jpg">
+                    <span class="songName">Belakina Kavithe</span>
+                    <span class="songlistplay"><span class="timestamp">04:11 <i id="5" class="far songItemPlay fa-play-circle"></i> </span></span>
+                </div>
+                <div class="songItem">
+                    <img alt="cov7.jpg">
+                    <span class="songName">Kesariya</span>
+                    <span class="songlistplay"><span class="timestamp">02:11 <i id="6" class="far songItemPlay fa-play-circle"></i> </span></span>
+                </div>
+                <div class="songItem">
+                    <img alt="cov8.jpg">
+                    <span class="songName">Love Nwantiti</span>
+                    <span class="songlistplay"><span class="timestamp">02:57 <i id="7" class="far songItemPlay fa-play-circle"></i> </span></span>
+                </div>
+                <div class="songItem">
+                    <img alt="cov9.jpg">
+                    <span class="songName">Mayavi"</span>
+                    <span class="songlistplay"><span class="timestamp">04:11 <i id="8" class="far songItemPlay fa-play-circle"></i> </span></span>
+                </div>
+                <div class="songItem">
+                    <img alt="cov10.jpg">
+                    <span class="songName">Na Jaana - Salam-e-Ishq</span>
+                    <span class="songlistplay"><span class="timestamp">04:28 <i id="9" class="far songItemPlay fa-play-circle"></i> </span></span>
+                </div>
+            </div>
+        </div>
+        <div class="songBanner"></div>
+    </div>
+
+    <div class="bottom">
+        <input type="range" name="range" id="myProgressBar" min="0" value="0" max="100">
+        <div class="icons">
+            <!-- fontawesome icons -->
+            <i class="fas fa-3x fa-step-backward" id="previous"></i>
+            <i class="far fa-3x fa-play-circle" id="masterPlay"></i>
+            <i class="fas fa-3x fa-step-forward" id="next"></i> 
+        </div>
+        <div class="songInfo">
+            <img src="playing.gif" width="42px" alt="" id="gif"> <span id="masterSongName">Zihall e makuimber</span>
+        </div>
+        <div id="timer" style="position: absolute; right: 5px; bottom: 5px; color: white; font-size: 20px;">
+            00:00
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/26504e4a1f.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Music Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease; /* Smooth transition for background change */
+        }
+
+        .top {
+            height: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 10px;
+        }
+
+        .top img {
+            max-height: 10%;
+            max-width: 10%;
+        }
+
+        .container {
+            width: 70%;
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.8); /* Adds a semi-transparent black background for readability */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .song-list-container {
+            max-height: 300px; /* Restrict height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            scrollbar-width: thin;
+        }
+
+        .song-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .song-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .song-item:hover {
+            background-color: #555;
+        }
+
+        .song-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .player {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .player audio {
+            width: 100%;
+            background-color: #222;
+            border: none;
+            outline: none;
+        }
+
+        .player-controls {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .player-controls button {
+            background-color: #1DB954;
+            border: none;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .player-controls button:hover {
+            background-color: #1ed760;
+        }
+
+        .gif {
+            display: none; /* Initially hide all GIFs */
+            margin-left: auto;
+            height: 50px;
+        }
+
+        .gif.stopped {
+            animation-play-state: paused; /* Set GIF to a stopped position */
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <a href="home.html" class="back-button"><i class="fas fa-arrow-left"></i></a>
+        <img src="logo1.png" alt="Mymusic Logo">
+    </div>
+
+    <div class="container">
+        <h1>My Music Player</h1>
+
+        <!-- Scrollable Song List -->
+        <div class="song-list-container">
+            <ul class="song-list" id="songList">
+                <li class="song-item" data-audio="songs/1.mp3" data-name="Zihaal-e-Miskin">
+                    <img src="song/zihaal.jpeg" alt="Song 1">
+                    <span>Javed-Mohsin, Shreya Ghoshal, and Vishal Mishra</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Samjho.mp3" data-name="Samjho Na">
+                    <img src="photo/samjo.jpeg" alt="Song 2">
+                    <span>Aditya Rikhari,Tulsi Kumar</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="songs/2.mp3" data-name="Sajni">
+                    <img src="photo/sajni.jpeg" alt="Song 2">
+                    <span>Arijit Singh</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/samjho na x wishes.mp3" data-name="Samjho Na X-Wishes">
+                    <img src="photo/samjhox.jpg" alt="Song 2">
+                    <span>Aditya Rikhari</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="songs/3.mp3" data-name="Tiger">
+                    <img src="song/tiger.jpeg" alt="Song 3">
+                    <span>Atif Aslam, Vishal & Shekhar</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing">
+                </li>
+                <li class="song-item" data-audio="song/myu.mp3" data-name="Mayavi">
+                    <img src="photo/Mayavi.jpeg" alt="Song 2">
+                    <span>Sonu Nigam,Sanjith Hegde</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Kaagadada Doniyalli.mp3" data-name="Kaagadada Doniyalli">
+                    <img src="photo/Kaagadada Doniyalli.jpeg" alt="Song 2">
+                    <span>Vasuki vaibhav</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Innunu Bekagide.mp3" data-name="Innunu Bekagide">
+                    <img src="photo/innu.jpeg" alt="Song 2">
+                    <span>Vasuki vaibhav</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Munjaane-Manjalli.mp3" data-name="Munjaane-Manjalli">
+                    <img src="photo/Mussanje Maatu" alt="Song 2">
+                    <span>Raghu-Dixit</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Bisilu Kudure.mp3" data-name="Bisilu Kudure">
+                    <img src="photo/bisilu.jpeg" alt="Song 2">
+                    <span>Joshua Sridhar</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Ve Kamleya.mp3" data-name="Ve Kamleya">
+                    <img src="photo/ve kaml.jpeg" alt="Song 2">
+                    <span>Arijit Singh</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Khairiyat.mp3" data-name="Khairiyat">
+                    <img src="photo/khari.jpeg" alt="Song 2">
+                    <span>Arijit Singh</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Husn-Anuv Jain.mp3" data-name="Husn-Anuv Jain">
+                    <img src="photo/husan.jpeg" alt="Song 2">
+                    <span>Husn-Anuv Jain</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Jo Tum Mere ho.mp3" data-name="Jo Tum Mere ho">
+                    <img src="photo/jo tum.jpeg" alt="Song 2">
+                    <span>Husn-Anuv Jain</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Aasa Kooda.mp3" data-name="Aasa Kooda">
+                    <img src="photo/aasu.jpeg" alt="Song 2">
+                    <span>Sai Abhyankkar,Sai Smriti</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="songs/4.mp3" data-name="Belakina Kavithe">
+                    <img src="photo/belakina.jpeg" alt="Song 2">
+                    <span>Sanjith Hegde</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="songs/5.mp3" data-name="Kesariya">
+                    <img src="photo/kesariya.jpeg" alt="Song 2">
+                    <span>Arijit Singh</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="songs/9.mp3" data-name="Haan Ke Haan">
+                    <img src="photo/Haan Ke Haan.jpeg" alt="Song 2">
+                    <span>Monali Thakur</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Tainu_Khabar_Nahi_Arijit_Singh.mp3" data-name="Tainu_Khabar_Nahi">
+                    <img src="photo/tarinal.jpg" alt="Song 2">
+                    <span>Arijit Singh</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="song/Tera gath.mp3" data-name="Tera Ghata">
+                    <img src="Tera Ghata.jpeg" alt="Song 2">
+                    <span>Gajendra Verma</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+                <li class="song-item" data-audio="songs/7.mp3" data-name="Tere bina">
+                    <img src="photo/Tere bina.jpg" alt="Song 2">
+                    <span>A.R.Rahman</span>
+                    <img class="gif stopped" src="playing.gif" alt="Playing...">
+                </li>
+            </ul>
+        </div>
+
+        <!-- Audio Player -->
+        <div class="player">
+            <audio id="audioPlayer" controls>
+                <source id="audioSource" src="" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+
+            <!-- Controls -->
+            <div class="player-controls">
+                <button id="playPauseBtn">Play</button>
+                <button id="nextBtn">Next</button>
+            </div>
+        </div>
+
+        <p id="currentSong">Now Playing: None</p>
+    </div>
+
+    <script>
+        const songList = document.getElementById('songList');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentSong = document.getElementById('currentSong');
+
+        const songs = Array.from(document.querySelectorAll('.song-item'));
+        let currentSongIndex = 0;
+        let isPlaying = false;
+
+        // Background images array
+        const backgrounds = [
+            "image.3.webp", 
+            "image.1.jpg", 
+            "home3.jpg",
+            "covers/2.jpg", 
+            "image.5.jpg",
+            "home1.jpg",
+            "image.2.jpg",
+            "covers/1.jpg"
+        ];
+        let currentBgIndex = 0;
+
+        // Change background every 3 seconds
+        setInterval(() => {
+            currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+            document.body.style.backgroundImage = `url('${backgrounds[currentBgIndex]}')`;
+        }, 3000);
+
+        // Load the selected song
+        function loadSong(index) {
+            const selectedSong = songs[index];
+            const audioSrc = selectedSong.getAttribute('data-audio');
+            const songName = selectedSong.getAttribute('data-name');
+
+            // Update audio source
+            audioSource.src = audioSrc;
+            currentSong.textContent = `Now Playing: ${songName}`;
+            audioPlayer.load();
+
+            // Stop all GIFs
+            document.querySelectorAll('.gif').forEach(gif => {
+                gif.style.display = 'none';
+                gif.classList.add('stopped');
+            });
+
+            // Show and animate GIF for the current song
+            const gif = selectedSong.querySelector('.gif');
+            gif.style.display = 'block';
+            gif.classList.remove('stopped');
+        }
+
+        // Play or Pause the song
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audioPlayer.pause();
+                playPauseBtn.textContent = "Play";
+
+                // Stop all GIFs
+                document.querySelectorAll('.gif').forEach(gif => {
+                    gif.style.display = 'none';
+                    gif.classList.add('stopped');
+                });
+            } else {
+                audioPlayer.play();
+                playPauseBtn.textContent = "Pause";
+
+                // Animate GIF for the current song
+                const currentSongElement = songs[currentSongIndex];
+                const gif = currentSongElement.querySelector('.gif');
+                gif.style.display = 'block';
+                gif.classList.remove('stopped');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Next song
+        nextBtn.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+            audioPlayer.play();
+            playPauseBtn.textContent = "Pause";
+            isPlaying = true;
+        });
+
+        // Song list item click event
+        songList.addEventListener('click', (e) => {
+            if (e.target && e.target.closest('li.song-item')) {
+                const songItem = e.target.closest('li.song-item');
+                currentSongIndex = songs.indexOf(songItem);
+                loadSong(currentSongIndex);
+                audioPlayer.play();
+                playPauseBtn.textContent = "Pause";
+                isPlaying = true;
+            }
+        });
+
+        // When the song ends, go to the next one
+        audioPlayer.addEventListener('ended', () => {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+            audioPlayer.play();
+            playPauseBtn.textContent = "Pause";
+            isPlaying = true;
+        });
+
+        // Initial song load
+        loadSong(currentSongIndex);
+    </script>
+</body>
+</html>

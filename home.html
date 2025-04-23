@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mymusic - Your Favourite Music is Here</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            height: 100vh;
+            background-color: #f0f0f0;
+            background-size: cover;
+            transition: background-image 0.5s ease;
+        }
+
+        .top {
+            height: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+
+        .top img {
+            max-height: 45%;
+            max-width: 45%;
+        }
+
+        .back-button {
+            font-size: 24px;
+            text-decoration: none;
+            color: black;
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .main {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            width: 150px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            border-radius: 15px; /* Added to make images curved */
+        }
+
+        .image-container img.blinking {
+            animation: blink 0.5s alternate infinite;
+        }
+
+        @keyframes blink {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0.2;
+            }
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .play-button, .next-button, .prev-button {
+            font-size: 24px;
+            color: #fff;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .play-button:hover, .next-button:hover, .prev-button:hover {
+            background-color: #555;
+        }
+
+        /* Search Button Styles */
+        .search-container {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            font-size: 16px;
+            width: 250px;
+        }
+
+        .search-container button {
+            padding: 10px 15px;
+            background-color:black;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-container button i {
+            margin-right: 5px;
+        }
+
+        .search-container button:hover {
+            background-color: black;
+        }
+        /* Login Icon - Positioned at the top right corner */
+.login-container {
+    position: absolute;
+    top: 5px; /* Adjust this value as needed */
+    right: 5px; /* Position at the right side */
+    display: block; /* Changed to block */
+    cursor: pointer;
+    font-size: 30px;
+    color: white; /* Set the color to white */
+}
+
+.login-container:hover {
+    color: #555; /* Hover effect */
+}
+    </style>
+</head>
+<body>
+
+    <div class="top">
+        <a href="another.html" class="back-button"><i class="fas fa-arrow-left"></i></a>
+        <img src="logo1.png" alt="Mymusic Logo">
+    </div>
+
+     <!-- Login Icon Positioned Above the Search Button -->
+     <div class="login-container">
+        <a href="form.html"><i class="fas fa-user-circle"></i></a>
+    </div>
+
+    <!-- Search Bar Section -->
+    <div class="search-container">
+        <form action="https://www.google.com/search" method="get">
+            <input type="text" name="query" placeholder="Search for songs..." required>
+            <button type="submit">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </form>
+    </div>
+
+    <div class="main">
+        <div class="content">
+            <h1>Welcome to Mymusic</h1>
+            <div class="image-container">
+                <img src="home2.jpg" alt="Image 1" class="interactive-image" data-video-url="https://www.youtube.com/watch?v=k3g_WjLCsXM">          
+                <img src="home3.jpg" alt="Image 2" class="interactive-image" data-video-url="https://www.youtube.com/watch?v=TMY1g8pAktk">
+                <img src="home4.jpg" alt="Image 3" class="interactive-image" data-video-url="https://www.youtube.com/watch?app=desktop&v=EtGh9oC2SZ0&t=0s">
+            </div>
+
+            <!-- Music Control Buttons -->
+            <div class="controls">
+                <button class="prev-button"><i class="fas fa-step-backward"></i></button>
+                <button class="play-button"><i class="fas fa-play"></i></button>
+                <button class="next-button"><i class="fas fa-step-forward"></i></button>
+            </div>
+            
+            <!-- Audio Player -->
+            <audio id="audioPlayer" controls>
+                <source id="audioSource" src="#" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code remains unchanged.
+        const images = document.querySelectorAll('.interactive-image');
+        const playButton = document.querySelector('.play-button');
+        const nextButton = document.querySelector('.next-button');
+        const prevButton = document.querySelector('.prev-button');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
+        let currentSongIndex = 0;
+
+        const songs = [
+            { src: 'songs/2.mp3', image: 'home2.jpg' },
+            { src: 'song/myu.mp3', image: 'home3.jpg' },
+            { src: 'song/Kaagadada Doniyalli.mp3', image: 'home4.jpg' },
+            { src: 'song/Zara Zara Cover.mp3', image: 'image.1.jpg' },
+            { src: 'song/Innunu Bekagide.mp3', image: 'image.5.jpg' }
+        ];
+
+        function changeSong() {
+            const song = songs[currentSongIndex];
+            audioSource.src = song.src;
+            audioPlayer.load();
+            document.body.style.backgroundImage = `url(${song.image})`;
+        }
+
+        let isPlaying = false;
+        playButton.addEventListener('click', () => {
+            if (isPlaying) {
+                audioPlayer.pause();
+                playButton.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                audioPlayer.play();
+                playButton.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            changeSong();
+            if (isPlaying) audioPlayer.play();
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            changeSong();
+            if (isPlaying) audioPlayer.play();
+        });
+
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                const videoUrl = image.getAttribute('data-video-url');
+                window.location.href = videoUrl;
+            });
+        });
+
+        changeSong();
+    </script>
+
+</body>
+</html>
